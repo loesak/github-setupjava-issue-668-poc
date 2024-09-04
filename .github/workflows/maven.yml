@@ -1,0 +1,36 @@
+name: Maven Deploy
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  release:
+    types: [ published ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 11
+          server-id: central
+#          server-username: MAVEN_USERNAME
+#          server-password: MAVEN_CENTRAL_TOKEN
+          gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MY_GPG_PASSPHRASE
+      - run: gpg --version
+      - run: gpg --list-secret-keys --keyid-format=long
+      - run: cat ~/.m2/settings.xml
+      - run: mvn -B -X -ntp verify
+        env:
+#          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+#          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+          MY_GPG_PASSPHRASE: ${{ secrets.MY_GPG_PASSPHRASE }}
+          # this env var needs to be named 'MAVEN_GPG_PASSPHRASE'. if a different name is desired,
+          # it needs to be specified here and in the maven-gpg-plugin configuration variable 'passphraseEnvName'
+          # see issue: https://github.com/actions/setup-java/issues/668
+#          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }}

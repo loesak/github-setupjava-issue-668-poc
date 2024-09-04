@@ -8,7 +8,7 @@ SHELL ["/bin/bash", "-c"]
 # install prerequisists
 RUN DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt install -y curl git zip unzip vim wget lsb-release
+    && apt install -y curl git zip unzip gnupg
 
 ARG USER=ubuntu
 ARG HOME="/home/${USER}"

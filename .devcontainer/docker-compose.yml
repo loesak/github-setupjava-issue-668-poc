@@ -7,6 +7,7 @@ services:
     container_name: github-setupjava-issue-668-poc-devenv
     volumes:
       - jbdevcontainer:/.jbdevcontainer
+      - ${HOME}/.ssh:/home/ubuntu/.ssh
       - ${HOME}/.gitconfig:/home/ubuntu/.gitconfig
     command: sleep infinity
 
