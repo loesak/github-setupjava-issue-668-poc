@@ -1,0 +1,10 @@
+{
+  "name": "github-setupjava-issue-668-poc",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "devenv",
+  "workspaceFolder": "/workspaces/github-setupjava-issue-668-poc",
+
+  "postAttachCommand": {
+    "maven-install-dependencies": "mvn dependency:resolve"
+  }
+}
