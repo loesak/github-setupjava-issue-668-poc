@@ -19,9 +19,10 @@ jobs:
           java-version: 11
           server-id: central
           gpg-private-key: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          gpg-passphrase: MY_MAVEN_GPG_PASSPHRASE
       - run: gpg --version
       - run: gpg --list-secret-keys --keyid-format=long
       - run: cat ~/.m2/settings.xml
       - run: mvn -B -X -ntp verify
         env:
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MY_GPG_PASSPHRASE }}
+          MY_MAVEN_GPG_PASSPHRASE: ${{ secrets.MY_GPG_PASSPHRASE }}
