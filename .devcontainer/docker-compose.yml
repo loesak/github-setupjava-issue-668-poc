@@ -1,0 +1,14 @@
+name: github-setupjava-issue-668-poc
+services:
+  devenv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-setupjava-issue-668-poc-devenv
+    volumes:
+      - jbdevcontainer:/.jbdevcontainer
+      - ${HOME}/.gitconfig:/home/ubuntu/.gitconfig
+    command: sleep infinity
+
+volumes:
+  jbdevcontainer:
