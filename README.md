@@ -15,7 +15,7 @@ You can view the contents of this branch here:
 https://github.com/loesak/github-setupjava-issue-668-poc
 
 Here is the associated successful build:
-https://github.com/loesak/github-setupjava-issue-668-poc/actions/runs/10705815942
+https://github.com/loesak/github-setupjava-issue-668-poc/actions/runs/10706333315
 
 # Branch 'workaround-specify-non-default-environment-variable-name'
 
