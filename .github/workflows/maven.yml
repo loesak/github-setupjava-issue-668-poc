@@ -24,4 +24,4 @@ jobs:
       - run: cat ~/.m2/settings.xml
       - run: mvn -B -X -ntp verify
         env:
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MY_GPG_PASSPHRASE }}
+          MY_MAVEN_GPG_PASSPHRASE: ${{ secrets.MY_GPG_PASSPHRASE }}
